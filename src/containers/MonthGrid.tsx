@@ -7,7 +7,11 @@ import { Calendar } from 'react-native-calendars'
 import { Box } from '../components'
 import { Months } from '../utils/months'
 
-const MonthGrid = () => {
+interface MonthGridProps {
+  year: number
+}
+
+const MonthGrid = ({ year }: MonthGridProps) => {
   const { width } = useWindowDimensions()
 
   return (
@@ -30,12 +34,11 @@ const MonthGrid = () => {
           <Box month={month.name} key={month.number}>
             <Calendar
               displayName={month.name}
-              initialDate={`2023-${month.number}-01`}
+              initialDate={`${year}-${month.number}-01`}
               hideArrows
               renderHeader={() => <></>}
               firstDay={1}
               showSixWeeks={false}
-              hideExtraDays
               hideDayNames
               style={{
                 width: width > 390 ? 290 : 95,

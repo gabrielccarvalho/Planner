@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { Header, MonthGrid } from '../containers'
+import { YearContext } from '../contexts/YearContext'
 
 const Home = () => {
+  const { year, setYear } = useContext(YearContext)
+
   return (
     <>
-      <Header year='2023' />
-      <MonthGrid />
+      <Header year={year} setYear={setYear} />
+      <MonthGrid year={year} />
     </>
   )
 }
