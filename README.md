@@ -6,7 +6,10 @@
   - [Getting Started 🏁](#getting-started-)
     - [Pre-requisits ✋🏼](#pre-requisits-)
     - [Installing ⚙️](#installing-️)
-  - [Screenshot 📸](#screenshot-)
+  - [Screenshots 📸](#screenshots-)
+    - [Home Screen](#home-screen)
+    - [Month View Screen](#month-view-screen)
+    - [Day View Screen](#day-view-screen)
   - [Disclaimer  📝](#disclaimer--)
 
 
@@ -63,8 +66,15 @@ or
 $ npm start && npm android
 ```
 
-## Screenshot 📸
-<img src='./src/assets/screenshot.png' alt='screenshot' style='width: 500px;' /><br/>
+## Screenshots 📸
+### Home Screen
+<img src='./src/assets/screenshot01.png' alt='home screen' style='width: 500px;' /><br/>
+
+### Month View Screen
+<img src='./src/assets/screenshot02.png' alt='month view screen' style='width: 500px;' /><br/>
+
+### Day View Screen
+<img src='./src/assets/screenshot03.png' alt='day view screen' style='width: 500px;' /><br/>
 
 ## Disclaimer  📝
 The planner app is still in building stage. Although is ready to use, it might present a few bugs or slows.
