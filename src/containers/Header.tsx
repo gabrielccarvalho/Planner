@@ -1,21 +1,31 @@
 import React from 'react'
 
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { ptBR } from 'date-fns/locale'
+
 import { useWindowDimensions } from 'react-native'
 
-import { Button } from 'react-native-material-ui'
+import { IconButton } from 'react-native-paper'
+import 'react-native-vector-icons'
 
 import styled from 'styled-components/native'
 
-interface HeaderProps {
-  year: number
-  setYear: React.Dispatch<React.SetStateAction<number>>
+import { RootStackParamList } from '../../types'
+
+interface HeaderProps
+  extends NativeStackScreenProps<RootStackParamList, 'Home' | 'MonthView' | 'DayView'> {
+  year?: number
+  month?: string
+  day?: string
+  date?: string
+  setYear?: React.Dispatch<React.SetStateAction<number>>
   children?: React.ReactNode
 }
 
 const Container = styled.View`
   flex: 1;
   flex-direction: row;
-  max-height: 400px;
+  max-height: 250px;
   justify-content: center;
   align-items: center;
   background-color: #f3c4d6;
@@ -26,43 +36,53 @@ const Container = styled.View`
 const Title = styled.Text`
   font-weight: bold;
   color: #ff3186;
+  margin: 0;
   /* font-family: 'AmaticSCBold'; */
 `
 
-const Header = ({ year, setYear }: HeaderProps) => {
+const TitleContainer = styled.View`
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const Header = ({
+  month,
+  year,
+  day,
+  date,
+  setYear = () => {
+    console.info('')
+  },
+  navigation,
+}: HeaderProps) => {
   const { width } = useWindowDimensions()
 
   return (
-    <Container style={width > 390 ? { maxHeight: 250 } : { maxHeight: 100 }}>
-      <Button
-        primary
-        text={`${year - 1}`}
-        onPress={() => setYear(year - 1)}
-        style={{
-          text: { fontSize: 20, color: '#ff3186' },
-          container: {
-            borderColor: '#ff3186',
-            borderWidth: 2,
-            padding: 1,
-            borderRadius: 10,
-            marginRight: 80,
-          },
-        }}
+    <Container>
+      <IconButton
+        icon='skip-previous-circle'
+        iconColor='#ff3186'
+        size={35}
+        onPress={year ? () => setYear(year - 1) : () => navigation.goBack()}
+        accessibilityLabelledBy={ptBR}
+        accessibilityLanguage={ptBR}
+        accessibilityLabel='Botão de voltar'
       />
-      <Title style={width > 390 ? { fontSize: 128 } : { fontSize: 64 }}>{year}</Title>
-      <Button
-        text={`${year + 1}`}
-        onPress={() => setYear(year + 1)}
-        style={{
-          text: { fontSize: 20, color: '#ff3186' },
-          container: {
-            borderColor: '#ff3186',
-            borderWidth: 2,
-            padding: 1,
-            borderRadius: 10,
-            marginLeft: 80,
-          },
-        }}
+      <TitleContainer>
+        <Title style={width > 390 ? { fontSize: 128 } : { fontSize: 64 }}>
+          {year || month || day}
+        </Title>
+        {date && <Title style={{ fontSize: 48, marginTop: -30 }}>{date}</Title>}
+      </TitleContainer>
+      <IconButton
+        icon='skip-next-circle'
+        iconColor='#ff3186'
+        size={35}
+        onPress={year ? () => setYear(year + 1) : () => navigation.goBack()}
+        accessibilityLabelledBy={ptBR}
+        accessibilityLanguage={ptBR}
+        accessibilityLabel='Botão de avanço'
       />
     </Container>
   )

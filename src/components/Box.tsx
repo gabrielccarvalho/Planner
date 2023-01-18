@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-import { useWindowDimensions } from 'react-native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+
+import { TouchableOpacity, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-interface MonthProps {
+import { RootStackParamList } from '../../types'
+import { YearContext } from '../contexts/YearContext'
+
+interface MonthProps
+  extends NativeStackScreenProps<RootStackParamList, 'Home' | 'MonthView' | 'DayView'> {
   month: string
   children?: React.ReactNode
 }
@@ -37,16 +43,26 @@ const Title = styled.Text`
   font-weight: bold;
 `
 
-const Box = ({ children, month }: MonthProps) => {
+const Box = ({ children, month, navigation }: MonthProps) => {
   const { width } = useWindowDimensions()
+  const { year } = useContext(YearContext)
 
   return (
     <Container
       style={width > 390 ? { width: 300, height: 315 } : { width: 100, height: 100 }}
     >
-      <Header style={width > 390 ? { width: 300, height: 36 } : { width: 100, height: 18 }}>
-        <Title style={width > 390 ? { fontSize: 18 } : { fontSize: 11 }}>{month}</Title>
-      </Header>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('MonthView', { month: month, year: year })
+        }}
+        style={{ zIndex: 999 }}
+      >
+        <Header
+          style={width > 390 ? { width: 300, height: 36 } : { width: 100, height: 18 }}
+        >
+          <Title style={width > 390 ? { fontSize: 18 } : { fontSize: 11 }}>{month}</Title>
+        </Header>
+      </TouchableOpacity>
       {children}
     </Container>
   )

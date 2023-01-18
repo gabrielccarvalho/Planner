@@ -1,18 +1,28 @@
 import React from 'react'
 
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+// eslint-disable-next-line import/no-duplicates
+import { format, parseISO, setDefaultOptions } from 'date-fns'
+// eslint-disable-next-line import/no-duplicates
+import { ptBR } from 'date-fns/locale'
+
 import { ScrollView, View, useWindowDimensions } from 'react-native'
 
 import { Calendar } from 'react-native-calendars'
 
+import { RootStackParamList } from '../../types'
+
 import { Box } from '../components'
 import { Months } from '../utils/months'
 
-interface MonthGridProps {
+interface MonthGridProps
+  extends NativeStackScreenProps<RootStackParamList, 'Home' | 'MonthView' | 'DayView'> {
   year: number
 }
 
-const MonthGrid = ({ year }: MonthGridProps) => {
+const MonthGrid = ({ year, navigation, route }: MonthGridProps) => {
   const { width } = useWindowDimensions()
+  setDefaultOptions({ locale: ptBR })
 
   return (
     <ScrollView
@@ -31,7 +41,7 @@ const MonthGrid = ({ year }: MonthGridProps) => {
         }}
       >
         {Months.map(month => (
-          <Box month={month.name} key={month.number}>
+          <Box month={month.name} key={month.number} navigation={navigation} route={route}>
             <Calendar
               displayName={month.name}
               initialDate={`${year}-${month.number}-01`}
@@ -40,6 +50,15 @@ const MonthGrid = ({ year }: MonthGridProps) => {
               firstDay={1}
               showSixWeeks={false}
               hideDayNames
+              onDayPress={({ dateString }) => {
+                const day = format(parseISO(dateString), 'eee')
+                const date = format(parseISO(dateString), 'dd/MM')
+
+                navigation.navigate('DayView', {
+                  day: `${day.charAt(0).toUpperCase() + day.slice(1)}`,
+                  date,
+                })
+              }}
               style={{
                 width: width > 390 ? 290 : 95,
               }}
