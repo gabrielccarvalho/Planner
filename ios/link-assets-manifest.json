@@ -1,4 +1,9 @@
 {
   "migIndex": 1,
-  "data": []
+  "data": [
+    {
+      "path": "src/assets/fonts/AmaticSCBold.ttf",
+      "sha1": "845b7ea45a082b12bebd77a16d2cfb671892de1c"
+    }
+  ]
 }
