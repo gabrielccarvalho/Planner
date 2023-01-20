@@ -1,9 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { ptBR } from 'date-fns/locale'
-
-import { useWindowDimensions } from 'react-native'
 
 import { IconButton } from 'react-native-paper'
 import 'react-native-vector-icons'
@@ -11,10 +8,11 @@ import 'react-native-vector-icons'
 import styled from 'styled-components/native'
 
 import { RootStackParamList } from '../../types'
+import { YearContext } from '../contexts/YearContext'
 
 interface HeaderProps
   extends NativeStackScreenProps<RootStackParamList, 'Home' | 'MonthView' | 'DayView'> {
-  year?: number
+  showYear?: boolean
   month?: string
   day?: string
   date?: string
@@ -34,10 +32,8 @@ const Container = styled.View`
 `
 
 const Title = styled.Text`
-  font-weight: bold;
+  /* font-weight: 700; */
   color: #ff3186;
-  margin: 0;
-  /* font-family: 'AmaticSCBold'; */
 `
 
 const TitleContainer = styled.View`
@@ -46,42 +42,30 @@ const TitleContainer = styled.View`
   justify-content: center;
 `
 
-const Header = ({
-  month,
-  year,
-  day,
-  date,
-  setYear = () => {
-    console.info('')
-  },
-  navigation,
-}: HeaderProps) => {
-  const { width } = useWindowDimensions()
-
+const Header = ({ showYear, month, day, date, navigation }: HeaderProps) => {
+  const { year, addYear, subYear } = useContext(YearContext)
   return (
     <Container>
       <IconButton
         icon='skip-previous-circle'
         iconColor='#ff3186'
         size={35}
-        onPress={year ? () => setYear(year - 1) : () => navigation.goBack()}
-        accessibilityLabelledBy={ptBR}
-        accessibilityLanguage={ptBR}
+        onPress={showYear ? subYear : () => navigation.goBack()}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
         accessibilityLabel='Botão de voltar'
       />
       <TitleContainer>
-        <Title style={width > 390 ? { fontSize: 128 } : { fontSize: 64 }}>
-          {year || month || day}
-        </Title>
+        <Title style={{ fontSize: 128 }}>{(showYear && year) || month || day}</Title>
         {date && <Title style={{ fontSize: 48, marginTop: -30 }}>{date}</Title>}
       </TitleContainer>
       <IconButton
         icon='skip-next-circle'
         iconColor='#ff3186'
         size={35}
-        onPress={year ? () => setYear(year + 1) : () => navigation.goBack()}
-        accessibilityLabelledBy={ptBR}
-        accessibilityLanguage={ptBR}
+        onPress={showYear ? addYear : () => navigation.goBack()}
+        accessibilityLabelledBy={undefined}
+        accessibilityLanguage={undefined}
         accessibilityLabel='Botão de avanço'
       />
     </Container>

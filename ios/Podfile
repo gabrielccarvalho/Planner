@@ -13,6 +13,7 @@ if linkage != nil
 end
 
 target 'planner' do
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   config = use_native_modules!
 

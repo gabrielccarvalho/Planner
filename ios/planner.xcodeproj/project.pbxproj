@@ -12,6 +12,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		6C894BB6AAA344A9A0A39450 /* AmaticSC_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4867BEFF149C4871B81B2DD6 /* AmaticSC_Regular.ttf */; };
+		71A7C1397456442286331382 /* AmaticSC_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3510A2DF968B41BC82EF8A9F /* AmaticSC_Bold.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-planner-plannerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-planner-plannerTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C0079F5F2971A13A0048C4FF /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = C0079F5E2971A13A0048C4FF /* main.jsbundle */; };
@@ -31,8 +33,6 @@
 		C07447732977730A0020CBFB /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C07447552977730A0020CBFB /* Fontisto.ttf */; };
 		C07447752977730A0020CBFB /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C07447562977730A0020CBFB /* FontAwesome5_Solid.ttf */; };
 		C07447772977730A0020CBFB /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C07447572977730A0020CBFB /* AntDesign.ttf */; };
-		C0D219672978CA6B00E17D03 /* AmaticSCBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0D219662978CA6B00E17D03 /* AmaticSCBold.ttf */; };
-		D0EB388BF8E742D39B86E1EC /* AmaticSCBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F26D131AB6A14AF7B21B9DCE /* AmaticSCBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,9 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = planner/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = planner/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-planner-plannerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planner-plannerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3510A2DF968B41BC82EF8A9F /* AmaticSC_Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AmaticSC_Bold.ttf; path = ../src/assets/fonts/AmaticSC_Bold.ttf; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-planner.debug.xcconfig"; path = "Target Support Files/Pods-planner/Pods-planner.debug.xcconfig"; sourceTree = "<group>"; };
+		4867BEFF149C4871B81B2DD6 /* AmaticSC_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AmaticSC_Regular.ttf; path = ../src/assets/fonts/AmaticSC_Regular.ttf; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-planner.release.xcconfig"; path = "Target Support Files/Pods-planner/Pods-planner.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-planner-plannerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-planner-plannerTests.debug.xcconfig"; path = "Target Support Files/Pods-planner-plannerTests/Pods-planner-plannerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-planner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-planner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,9 +81,8 @@
 		C07447552977730A0020CBFB /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		C07447562977730A0020CBFB /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		C07447572977730A0020CBFB /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		C0D219662978CA6B00E17D03 /* AmaticSCBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AmaticSCBold.ttf; path = ../src/assets/AmaticSCBold.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F26D131AB6A14AF7B21B9DCE /* AmaticSCBold.ttf */ = {isa = PBXFileReference; name = "AmaticSCBold.ttf"; path = "../src/assets/fonts/AmaticSCBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F26D131AB6A14AF7B21B9DCE /* AmaticSCBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AmaticSCBold.ttf; path = ../src/assets/fonts/AmaticSCBold.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				F26D131AB6A14AF7B21B9DCE /* AmaticSCBold.ttf */,
+				3510A2DF968B41BC82EF8A9F /* AmaticSC_Bold.ttf */,
+				4867BEFF149C4871B81B2DD6 /* AmaticSC_Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -164,7 +167,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				C0D219662978CA6B00E17D03 /* AmaticSCBold.ttf */,
 				13B07FAE1A68108700A75B9A /* planner */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* plannerTests */,
@@ -331,11 +333,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0D219672978CA6B00E17D03 /* AmaticSCBold.ttf in Resources */,
 				C0079F5F2971A13A0048C4FF /* main.jsbundle in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				D0EB388BF8E742D39B86E1EC /* AmaticSCBold.ttf in Resources */,
+				71A7C1397456442286331382 /* AmaticSC_Bold.ttf in Resources */,
+				6C894BB6AAA344A9A0A39450 /* AmaticSC_Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

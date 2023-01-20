@@ -1,27 +1,26 @@
-import React from 'react'
+/* eslint-disable import/no-duplicates */
+import React, { useContext } from 'react'
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-// eslint-disable-next-line import/no-duplicates
-import { format, parseISO, setDefaultOptions } from 'date-fns'
-// eslint-disable-next-line import/no-duplicates
-import { ptBR } from 'date-fns/locale'
 
-import { ScrollView, View, useWindowDimensions } from 'react-native'
+import { format, parseISO, setDefaultOptions } from 'date-fns'
+import { ptBR } from 'date-fns/esm/locale'
+
+import { ScrollView, View } from 'react-native'
 
 import { Calendar } from 'react-native-calendars'
 
 import { RootStackParamList } from '../../types'
 
 import { Box } from '../components'
+import { YearContext } from '../contexts/YearContext'
 import { Months } from '../utils/months'
 
-interface MonthGridProps
-  extends NativeStackScreenProps<RootStackParamList, 'Home' | 'MonthView' | 'DayView'> {
-  year: number
-}
-
-const MonthGrid = ({ year, navigation, route }: MonthGridProps) => {
-  const { width } = useWindowDimensions()
+const MonthGrid = ({
+  navigation,
+  route,
+}: NativeStackScreenProps<RootStackParamList, 'Home' | 'MonthView' | 'DayView'>) => {
+  const { year } = useContext(YearContext)
   setDefaultOptions({ locale: ptBR })
 
   return (
@@ -59,13 +58,8 @@ const MonthGrid = ({ year, navigation, route }: MonthGridProps) => {
                   date,
                 })
               }}
-              style={{
-                width: width > 390 ? 290 : 95,
-              }}
-              theme={{
-                textDayFontSize: width > 390 ? 14 : 8,
-                todayTextColor: '#F6ACC5',
-              }}
+              style={{ width: 290 }}
+              theme={{ textDayFontSize: 14, todayTextColor: '#F6ACC5' }}
             />
           </Box>
         ))}
