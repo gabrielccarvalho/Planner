@@ -29,6 +29,7 @@ const Container = styled.View`
   background-color: #f3c4d6;
   padding: 0;
   margin: 0;
+  margin-bottom: 25px;
 `
 
 const Title = styled.Text`

@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 
-import { SafeAreaView, useWindowDimensions } from 'react-native'
+import { SafeAreaView, useWindowDimensions, ViewStyle } from 'react-native'
 import RNCanvas, { CanvasRenderingContext2D } from 'react-native-canvas'
 
 interface CanvasProps {
   children?: React.ReactNode
+  style?: ViewStyle
 }
 
-const Canvas = ({ children }: CanvasProps) => {
+const Canvas = ({ children, style }: CanvasProps) => {
   const canvasRef = useRef<RNCanvas>(null)
   const contextRef = useRef<CanvasRenderingContext2D | null>(null)
 
@@ -30,7 +31,7 @@ const Canvas = ({ children }: CanvasProps) => {
 
   return (
     <SafeAreaView
-      style={{ flex: 1 }}
+      style={{ flex: 1, ...style }}
       onTouchStart={e => {
         const layout = e.nativeEvent
 
@@ -59,7 +60,7 @@ const Canvas = ({ children }: CanvasProps) => {
         style={{
           width: '100%',
           height: '100%',
-          backfaceVisibility: 'hidden',
+          position: 'absolute',
         }}
       />
     </SafeAreaView>

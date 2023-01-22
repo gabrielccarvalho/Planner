@@ -19,7 +19,6 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.2",
     "@react-navigation/native-stack": "^6.9.8",
-    "@terrylinla/react-native-sketch-canvas": "^0.8.0",
     "@types/styled-components-react-native": "^5.2.1",
     "date-fns": "^2.29.3",
     "react": "18.2.0",
