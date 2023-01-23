@@ -6,7 +6,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { format, parseISO, setDefaultOptions } from 'date-fns'
 import { ptBR } from 'date-fns/esm/locale'
 
-import { ScrollView, View } from 'react-native'
+import { ScrollView, View, SafeAreaView } from 'react-native'
 
 import { Calendar } from 'react-native-calendars'
 
@@ -24,47 +24,51 @@ const MonthGrid = ({
   setDefaultOptions({ locale: ptBR })
 
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior='automatic'
-      style={{ flex: 1, backgroundColor: '#ffffff', marginBottom: -18, paddingBottom: 100 }}
-    >
-      <View
-        style={{
-          flex: 1,
-          flexWrap: 'wrap',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-          margin: 25,
-          marginHorizontal: 0,
-        }}
-      >
-        {Months.map(month => (
-          <Box month={month.name} key={month.number} navigation={navigation} route={route}>
-            <Calendar
-              displayName={month.name}
-              initialDate={`${year}-${month.number}-01`}
-              hideArrows
-              renderHeader={() => <></>}
-              firstDay={1}
-              showSixWeeks={false}
-              hideDayNames
-              onDayPress={({ dateString }) => {
-                const day = format(parseISO(dateString), 'eee')
-                const date = format(parseISO(dateString), 'dd/MM')
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ffffff' }}>
+      <ScrollView contentInsetAdjustmentBehavior='automatic'>
+        <View
+          style={{
+            flex: 1,
+            flexWrap: 'wrap',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: 25,
+            marginHorizontal: 0,
+          }}
+        >
+          {Months.map(month => (
+            <Box
+              month={month.name}
+              key={month.number}
+              navigation={navigation}
+              route={route}
+            >
+              <Calendar
+                displayName={month.name}
+                initialDate={`${year}-${month.number}-01`}
+                hideArrows
+                renderHeader={() => <></>}
+                firstDay={1}
+                showSixWeeks={false}
+                hideDayNames
+                onDayPress={({ dateString }) => {
+                  const day = format(parseISO(dateString), 'eee')
+                  const date = format(parseISO(dateString), 'dd/MM')
 
-                navigation.navigate('DayView', {
-                  day: `${day.charAt(0).toUpperCase() + day.slice(1)}`,
-                  date,
-                })
-              }}
-              style={{ width: 290 }}
-              theme={{ textDayFontSize: 14, todayTextColor: '#F6ACC5' }}
-            />
-          </Box>
-        ))}
-      </View>
-    </ScrollView>
+                  navigation.navigate('DayView', {
+                    day: `${day.charAt(0).toUpperCase() + day.slice(1)}`,
+                    date,
+                  })
+                }}
+                style={{ width: 290 }}
+                theme={{ textDayFontSize: 14, todayTextColor: '#F6ACC5' }}
+              />
+            </Box>
+          ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
